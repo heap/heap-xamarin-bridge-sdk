@@ -1,0 +1,259 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target arm64-apple-macos10.14 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name HeapSwiftCoreInterfaces
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AppKit
+import Foundation
+@_exported import HeapSwiftCoreInterfaces
+import OSLog
+import Swift
+import _Concurrency
+@objc(HeapSourceInfo) public class SourceInfo : ObjectiveC.NSObject {
+  final public let name: Swift.String
+  final public let version: Swift.String
+  final public let platform: Swift.String
+  final public let properties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue]
+  public init(name: Swift.String, version: Swift.String, platform: Swift.String, properties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue] = [:])
+  @objc deinit
+}
+public protocol HeapProtocol {
+  func startRecording(_ environmentId: Swift.String, with options: [HeapSwiftCoreInterfaces.Option : Any])
+  func stopRecording()
+  func track(_ event: Swift.String, properties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue], timestamp: Foundation.Date, sourceInfo: HeapSwiftCoreInterfaces.SourceInfo?, pageview: HeapSwiftCoreInterfaces.Pageview?)
+  func trackPageview(_ properties: HeapSwiftCoreInterfaces.PageviewProperties, timestamp: Foundation.Date, sourceInfo: HeapSwiftCoreInterfaces.SourceInfo?, bridge: HeapSwiftCoreInterfaces.RuntimeBridge?, userInfo: Any?) -> HeapSwiftCoreInterfaces.Pageview?
+  func uncommittedInteractionEvent(timestamp: Foundation.Date, sourceInfo: HeapSwiftCoreInterfaces.SourceInfo?, pageview: HeapSwiftCoreInterfaces.Pageview?) -> HeapSwiftCoreInterfaces.InteractionEventProtocol?
+  func trackInteraction(interaction: HeapSwiftCoreInterfaces.Interaction, nodes: [HeapSwiftCoreInterfaces.InteractionNode], callbackName: Swift.String?, timestamp: Foundation.Date, sourceInfo: HeapSwiftCoreInterfaces.SourceInfo?, pageview: HeapSwiftCoreInterfaces.Pageview?)
+  func identify(_ identity: Swift.String)
+  func resetIdentity()
+  func addUserProperties(_ properties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue])
+  func addEventProperties(_ properties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue])
+  func removeEventProperty(_ name: Swift.String)
+  func clearEventProperties()
+  var userId: Swift.String? { get }
+  var identity: Swift.String? { get }
+  var sessionId: Swift.String? { get }
+  func fetchSessionId() -> Swift.String?
+  func addSource(_ source: HeapSwiftCoreInterfaces.Source, isDefault: Swift.Bool)
+  func removeSource(_ name: Swift.String)
+  func addRuntimeBridge(_ bridge: HeapSwiftCoreInterfaces.RuntimeBridge)
+  func removeRuntimeBridge(_ bridge: HeapSwiftCoreInterfaces.RuntimeBridge)
+}
+@objc(HeapLogLevel) public enum LogLevel : Swift.Int, Swift.Comparable {
+  case none = 0
+  case error = 10
+  case warn = 20
+  case info = 30
+  case debug = 40
+  case trace = 50
+  public static func < (lhs: HeapSwiftCoreInterfaces.LogLevel, rhs: HeapSwiftCoreInterfaces.LogLevel) -> Swift.Bool
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol LogChannel {
+  func printLog(logLevel: HeapSwiftCoreInterfaces.LogLevel, message: () -> Swift.String, source: Swift.String?, file: Swift.String, line: Swift.UInt)
+}
+@_inheritsConvenienceInitializers @objc public class HeapLogger : ObjectiveC.NSObject {
+  @objc(sharedInstance) public static let shared: HeapSwiftCoreInterfaces.HeapLogger
+  @objc public var logLevel: HeapSwiftCoreInterfaces.LogLevel
+  public var logChannel: HeapSwiftCoreInterfaces.LogChannel
+  public func error(_ message: @autoclosure () -> Swift.String, source: Swift.String? = nil, file: Swift.String = #fileID, line: Swift.UInt = #line)
+  public func warn(_ message: @autoclosure () -> Swift.String, source: Swift.String? = nil, file: Swift.String = #fileID, line: Swift.UInt = #line)
+  public func info(_ message: @autoclosure () -> Swift.String, source: Swift.String? = nil, file: Swift.String = #fileID, line: Swift.UInt = #line)
+  public func debug(_ message: @autoclosure () -> Swift.String, source: Swift.String? = nil, file: Swift.String = #fileID, line: Swift.UInt = #line)
+  public func trace(_ message: @autoclosure () -> Swift.String, source: Swift.String? = nil, file: Swift.String = #fileID, line: Swift.UInt = #line)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol Source : AnyObject {
+  var name: Swift.String { get }
+  var version: Swift.String { get }
+  func didStartRecording(options: [HeapSwiftCoreInterfaces.Option : Any], complete: @escaping () -> Swift.Void)
+  func didStopRecording(complete: @escaping () -> Swift.Void)
+  func sessionDidStart(sessionId: Swift.String, timestamp: Foundation.Date, foregrounded: Swift.Bool, complete: @escaping () -> Swift.Void)
+  func applicationDidEnterForeground(timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  func applicationDidEnterBackground(timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  func windowDidBecomeMain(window: AppKit.NSWindow, timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  func windowDidResignMain(window: AppKit.NSWindow, timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  func activePageview(sessionId: Swift.String, timestamp: Foundation.Date, complete: @escaping (_ pageview: HeapSwiftCoreInterfaces.Pageview?) -> Swift.Void)
+  func reissuePageview(_ pageview: HeapSwiftCoreInterfaces.Pageview, sessionId: Swift.String, timestamp: Foundation.Date, complete: @escaping (_ pageview: HeapSwiftCoreInterfaces.Pageview?) -> Swift.Void)
+}
+extension HeapSwiftCoreInterfaces.Source {
+  public func windowDidBecomeMain(window: AppKit.NSWindow, timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  public func windowDidResignMain(window: AppKit.NSWindow, timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+}
+@objc public enum OptionType : Swift.Int {
+  case string
+  case boolean
+  case timeInterval
+  case integer
+  case url
+  case data
+  case object
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension HeapSwiftCoreInterfaces.OptionType : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(HeapOption) public class Option : ObjectiveC.NSObject {
+  final public let name: Swift.String
+  final public let type: HeapSwiftCoreInterfaces.OptionType
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc public static func register(name: Swift.String, type: HeapSwiftCoreInterfaces.OptionType) -> HeapSwiftCoreInterfaces.Option
+  @objc public static func named(_ name: Swift.String) -> HeapSwiftCoreInterfaces.Option?
+  @objc deinit
+}
+@objc extension HeapSwiftCoreInterfaces.Option : Foundation.NSCopying {
+  @objc dynamic public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+}
+@objc extension HeapSwiftCoreInterfaces.Option {
+  @objc public static let uploadInterval: HeapSwiftCoreInterfaces.Option
+  @objc public static let baseUrl: HeapSwiftCoreInterfaces.Option
+  @objc public static let messageBatchByteLimit: HeapSwiftCoreInterfaces.Option
+  @objc public static let messageBatchMessageLimit: HeapSwiftCoreInterfaces.Option
+  @objc public static let captureAdvertiserId: HeapSwiftCoreInterfaces.Option
+}
+@objc extension HeapSwiftCoreInterfaces.Option {
+  @objc public static let disablePageviewAutocapture: HeapSwiftCoreInterfaces.Option
+  @objc public static let disablePageviewTitleCapture: HeapSwiftCoreInterfaces.Option
+  @objc public static let disableInteractionAutocapture: HeapSwiftCoreInterfaces.Option
+  @objc public static let disableInteractionTextCapture: HeapSwiftCoreInterfaces.Option
+  @objc public static let startSessionImmediately: HeapSwiftCoreInterfaces.Option
+  @objc public static let disableInteractionAccessibilityLabelCapture: HeapSwiftCoreInterfaces.Option
+  @objc public static let disableInteractionReferencingPropertyCapture: HeapSwiftCoreInterfaces.Option
+  @objc public static let interactionHierarchyCaptureLimit: HeapSwiftCoreInterfaces.Option
+}
+extension Swift.Dictionary where Key == HeapSwiftCoreInterfaces.Option, Value == Any {
+  public func string(at key: HeapSwiftCoreInterfaces.Option) -> Swift.String?
+  public func boolean(at key: HeapSwiftCoreInterfaces.Option) -> Swift.Bool?
+  public func timeInterval(at key: HeapSwiftCoreInterfaces.Option) -> Foundation.TimeInterval?
+  public func integer(at key: HeapSwiftCoreInterfaces.Option) -> Swift.Int?
+  public func url(at key: HeapSwiftCoreInterfaces.Option) -> Foundation.URL?
+  public func data(at key: HeapSwiftCoreInterfaces.Option) -> Foundation.Data?
+  public func object(at key: HeapSwiftCoreInterfaces.Option) -> ObjectiveC.NSObject?
+  public func sanitizedValue(at key: HeapSwiftCoreInterfaces.Option) -> Any?
+  public func sanitizedCopy() -> [HeapSwiftCoreInterfaces.Option : Any]
+  public func matches(_ other: [HeapSwiftCoreInterfaces.Option : Any], at key: Key) -> Swift.Bool
+  public func matches(_ other: [HeapSwiftCoreInterfaces.Option : Any]) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers open class Pageview {
+  final public let isNone: Swift.Bool
+  final public let sessionId: Swift.String
+  final public let properties: HeapSwiftCoreInterfaces.PageviewProperties
+  final public let userInfo: Any?
+  public init(sessionId: Swift.String, properties: HeapSwiftCoreInterfaces.PageviewProperties, userInfo: Any?)
+  public static let none: HeapSwiftCoreInterfaces.Pageview
+  @objc deinit
+}
+public struct PageviewProperties {
+  public var componentOrClassName: Swift.String?
+  public var title: Swift.String?
+  public var url: Foundation.URL?
+  public var sourceProperties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue]
+  public static func with(_ populator: (inout HeapSwiftCoreInterfaces.PageviewProperties) throws -> ()) rethrows -> HeapSwiftCoreInterfaces.PageviewProperties
+}
+public enum Interaction {
+  case custom(Swift.String)
+  case unspecified, click, touch, change, submit
+  case builtin(Swift.Int)
+}
+public struct InteractionNode {
+  public var nodeName: Swift.String
+  public var nodeText: Swift.String?
+  public var nodeHtmlClass: Swift.String?
+  public var nodeId: Swift.String?
+  public var href: Swift.String?
+  public var accessibilityLabel: Swift.String?
+  public var referencingPropertyName: Swift.String?
+  public var attributes: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue]
+  public init(nodeName: Swift.String)
+}
+public protocol InteractionEventProtocol : AnyObject {
+  var kind: HeapSwiftCoreInterfaces.Interaction? { get set }
+  var callbackName: Swift.String? { get set }
+  var nodes: [HeapSwiftCoreInterfaces.InteractionNode] { get set }
+  func commit()
+}
+public protocol HeapPropertyValue {
+  var heapValue: Swift.String { get }
+}
+extension Swift.Bool : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.Int : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.Int64 : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.Int32 : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.Int16 : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.Int8 : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.Double : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.Float : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+extension Swift.Substring : HeapSwiftCoreInterfaces.HeapPropertyValue {
+  public var heapValue: Swift.String {
+    get
+  }
+}
+public protocol RuntimeBridge : AnyObject {
+  func didStartRecording(options: [HeapSwiftCoreInterfaces.Option : Any], complete: @escaping () -> Swift.Void)
+  func didStopRecording(complete: @escaping () -> Swift.Void)
+  func sessionDidStart(sessionId: Swift.String, timestamp: Foundation.Date, foregrounded: Swift.Bool, complete: @escaping () -> Swift.Void)
+  func applicationDidEnterForeground(timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  func applicationDidEnterBackground(timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  func windowDidBecomeMain(window: AppKit.NSWindow, timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  func windowDidResignMain(window: AppKit.NSWindow, timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  func reissuePageview(_ pageview: HeapSwiftCoreInterfaces.Pageview, sessionId: Swift.String, timestamp: Foundation.Date, complete: @escaping (_ pageview: HeapSwiftCoreInterfaces.Pageview?) -> Swift.Void)
+}
+extension HeapSwiftCoreInterfaces.RuntimeBridge {
+  public func windowDidBecomeMain(window: AppKit.NSWindow, timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+  public func windowDidResignMain(window: AppKit.NSWindow, timestamp: Foundation.Date, complete: @escaping () -> Swift.Void)
+}
+extension HeapSwiftCoreInterfaces.LogLevel : Swift.Hashable {}
+extension HeapSwiftCoreInterfaces.LogLevel : Swift.RawRepresentable {}
+extension HeapSwiftCoreInterfaces.OptionType : Swift.Equatable {}
+extension HeapSwiftCoreInterfaces.OptionType : Swift.Hashable {}
+extension HeapSwiftCoreInterfaces.OptionType : Swift.RawRepresentable {}

@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{1CBA0B17-D07C-42C3-B6E3-F944D683FFA7}</ProjectGuid>
+    <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HeapSwiftCore.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>NativeLibrary</AssemblyName>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>HeapSwiftCore.iOS</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoBindingEmbedding>true</NoBindingEmbedding>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="HeapSwiftCore-Dynamic.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+    <NativeReference Include="HeapSwiftCoreInterfaces.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="HeapSwiftCore-Dynamic.xcframework\Info.plist" />
+    <BundleResource Include="HeapSwiftCore-Dynamic.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCore-Dynamic.framework\HeapSwiftCore-Dynamic" />
+    <BundleResource Include="HeapSwiftCore-Dynamic.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCore-Dynamic.framework\Info.plist" />
+    <BundleResource Include="HeapSwiftCore-Dynamic.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCore-Dynamic.framework\_CodeSignature\CodeResources" />
+    <BundleResource Include="HeapSwiftCore-Dynamic.xcframework\ios-arm64\HeapSwiftCore-Dynamic.framework\HeapSwiftCore-Dynamic" />
+    <BundleResource Include="HeapSwiftCore-Dynamic.xcframework\ios-arm64\HeapSwiftCore-Dynamic.framework\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-tvos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-tvos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-tvos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-tvos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\_CodeSignature\CodeResources" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-tvos-simulator.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-tvos-simulator.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-tvos-simulator.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-tvos-simulator.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-tvos-simulator.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-tvos-simulator.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-tvos-simulator.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\tvos-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-tvos-simulator.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Resources\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\_CodeSignature\CodeResources" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Resources\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\_CodeSignature\CodeResources" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Resources\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-macos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\macos-arm64_x86_64\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-macos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\_CodeSignature\CodeResources" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-simulator.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-simulator.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-simulator.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-simulator.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-simulator.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-simulator.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-simulator.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-simulator.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Resources\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Resources\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\A\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Resources\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-ios-macabi.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64_x86_64-maccatalyst\HeapSwiftCoreInterfaces.framework\Versions\Current\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios-macabi.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\_CodeSignature\CodeResources" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-watchos-simulator.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\i386-apple-watchos-simulator.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-watchos-simulator.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos-simulator.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos-simulator.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos-simulator.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos-simulator.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-watchos-simulator.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\i386-apple-watchos-simulator.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\i386-apple-watchos-simulator.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\i386-apple-watchos-simulator.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_i386_x86_64-simulator\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\x86_64-apple-watchos-simulator.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\ios-arm64\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-ios.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\HeapSwiftCoreInterfaces" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Info.plist" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Headers\HeapSwiftCoreInterfaces-Swift.h" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\module.modulemap" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64_32-apple-watchos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\armv7k-apple-watchos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\armv7k-apple-watchos.private.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64_32-apple-watchos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64_32-apple-watchos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64_32-apple-watchos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\armv7k-apple-watchos.swiftinterface" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\armv7k-apple-watchos.abi.json" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos.swiftdoc" />
+    <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos.swiftinterface" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+</Project>
