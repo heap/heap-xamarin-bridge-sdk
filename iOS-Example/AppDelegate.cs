@@ -1,7 +1,7 @@
 ﻿using Foundation;
 using UIKit;
 using System;
-using HeapSwiftCoreXamarin;
+using HeapInc.Xamarin.iOS;
 
 namespace iOS_Example
 {

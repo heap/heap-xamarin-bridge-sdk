@@ -2,7 +2,7 @@
 using ObjCRuntime;
 using WebKit;
 
-namespace HeapSwiftCoreXamarin
+namespace HeapInc.Xamarin.iOS
 {
     // @interface HeapLogger : NSObject
     [BaseType(typeof(NSObject), Name = "_TtC23HeapSwiftCoreInterfaces10HeapLogger")]

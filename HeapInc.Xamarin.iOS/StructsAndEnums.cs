@@ -1,4 +1,4 @@
-﻿namespace HeapSwiftCoreXamarin
+﻿namespace HeapInc.Xamarin.iOS
 {
     public enum HeapLogLevel
     {

@@ -135,9 +135,9 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\HeapSwiftCore.iOS\HeapSwiftCore.iOS.csproj">
+      <ProjectReference Include="..\HeapInc.Xamarin.iOS\HeapInc.Xamarin.iOS.csproj">
         <Project>{1CBA0B17-D07C-42C3-B6E3-F944D683FFA7}</Project>
-        <Name>HeapSwiftCore.iOS</Name>
+        <Name>HeapInc.Xamarin.iOS</Name>
       </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
