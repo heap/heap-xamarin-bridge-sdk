@@ -154,6 +154,7 @@ namespace Android_Example
 			global::Xamarin.Essentials.Resource.Id.text2 = global::Android_Example.Resource.Id.text2;
 			global::Xamarin.Essentials.Resource.Id.time = global::Android_Example.Resource.Id.time;
 			global::Xamarin.Essentials.Resource.Id.title = global::Android_Example.Resource.Id.title;
+			global::Xamarin.Essentials.Resource.Id.view_tree_lifecycle_owner = global::Android_Example.Resource.Id.view_tree_lifecycle_owner;
 			global::Xamarin.Essentials.Resource.Integer.status_bar_notification_info_maxnum = global::Android_Example.Resource.Integer.status_bar_notification_info_maxnum;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_page = global::Android_Example.Resource.Layout.browser_actions_context_menu_page;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_row = global::Android_Example.Resource.Layout.browser_actions_context_menu_row;

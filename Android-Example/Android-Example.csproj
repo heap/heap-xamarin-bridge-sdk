@@ -108,8 +108,9 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HeapCore-Android\HeapCore-Android.csproj">
-      <Name>HeapCore-Android</Name>
+    <ProjectReference Include="..\HeapInc.Xamarin.Android\HeapInc.Xamarin.Android.csproj">
+      <Project>{5A98B5B5-4DC2-4234-9C14-30D19844A989}</Project>
+      <Name>HeapInc.Xamarin.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

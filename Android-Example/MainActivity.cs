@@ -7,7 +7,7 @@ using AndroidX.AppCompat.Widget;
 using AndroidX.AppCompat.App;
 using Google.Android.Material.FloatingActionButton;
 using Google.Android.Material.Snackbar;
-using Heap.Core.Android;
+using HeapInc.Xamarin.Android;
 
 namespace Android_Example
 {
@@ -26,7 +26,7 @@ namespace Android_Example
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
 
-            HeapAndroidCore.StartRecording(this, "3320806168");
+            Heap.StartRecording(this, "833626842");
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -52,7 +52,7 @@ namespace Android_Example
             Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
                 .SetAction("Action", (View.IOnClickListener)null).Show();
 
-            HeapAndroidCore.Track("xamarin_event");
+            Heap.Track("xamarin_event");
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
