@@ -16,7 +16,6 @@ namespace HeapInc.Xamarin
         void AddEventProperties(Dictionary<string, string> properties);
         void RemoveEventProperty(string name);
         void ClearEventProperties();
-        void SetLogLevel(HeapLogLevel logLevel);
         string? FetchSessionId();
     }
 }

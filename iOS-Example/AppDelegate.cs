@@ -1,7 +1,9 @@
 ﻿using Foundation;
 using UIKit;
 using System;
-using HeapInc.Xamarin.iOS;
+using HeapInc.Xamarin;
+using static HeapInc.Xamarin.iOS.Implementation;
+using System.Collections.Generic;
 
 namespace iOS_Example
 {
@@ -16,12 +18,13 @@ namespace iOS_Example
         [Export ("application:didFinishLaunchingWithOptions:")]
         public bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
         {
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
-
-            Heap.SharedInstance.LogLevel = HeapLogLevel.Trace;
-            Heap.SharedInstance.StartRecording("833626842");
-            Console.WriteLine("Heap LogLevel: " + Heap.SharedInstance.LogLevel);
+            SetLogLevel(HeapLogLevel.Trace);
+            StartRecording("833626842", new HeapOptions {
+                //BaseUri = new Uri("https://mybaseuri.com"),
+                UploadInterval = TimeSpan.FromSeconds(5),
+                CaptureAdvertiserId = true,
+                StartSessionImmediately = true
+            });
 
             return true;
         }

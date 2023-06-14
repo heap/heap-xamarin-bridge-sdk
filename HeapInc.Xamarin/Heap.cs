@@ -158,19 +158,6 @@ namespace HeapInc.Xamarin
             }
         }
 
-        public static void SetLogLevel(HeapLogLevel logLevel)
-        {
-            var implementation = Implementation;
-            if (implementation is not null)
-            {
-                implementation.SetLogLevel(logLevel);
-            }
-            else
-            {
-                Console.WriteLine("SetLogLevel failed because the implementation was not set");
-            }
-        }
-
         public static string? FetchSessionId()
         {
             var implementation = Implementation;

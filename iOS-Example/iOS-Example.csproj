@@ -135,6 +135,10 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\HeapInc.Xamarin\HeapInc.Xamarin.csproj">
+        <Project>{E7B8F644-DA3F-4E96-B1C9-E24EE9EE6F38}</Project>
+        <Name>HeapInc.Xamarin</Name>
+      </ProjectReference>
       <ProjectReference Include="..\HeapInc.Xamarin.iOS\HeapInc.Xamarin.iOS.csproj">
         <Project>{1CBA0B17-D07C-42C3-B6E3-F944D683FFA7}</Project>
         <Name>HeapInc.Xamarin.iOS</Name>

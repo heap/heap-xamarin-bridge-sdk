@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Heap.iOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
@@ -229,6 +230,12 @@
     <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\armv7k-apple-watchos.abi.json" />
     <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos.swiftdoc" />
     <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos.swiftinterface" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HeapInc.Xamarin\HeapInc.Xamarin.csproj">
+      <Project>{E7B8F644-DA3F-4E96-B1C9-E24EE9EE6F38}</Project>
+      <Name>HeapInc.Xamarin</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

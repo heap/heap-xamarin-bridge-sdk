@@ -1,7 +1,9 @@
 ﻿using Foundation;
 using System;
+using System.Collections.Generic;
 using UIKit;
-using HeapInc.Xamarin.iOS;
+using HeapInc.Xamarin;
+using static HeapInc.Xamarin.iOS.Implementation;
 
 namespace iOS_Example
 {
@@ -25,79 +27,96 @@ namespace iOS_Example
 
         void updateLabel()
         {
-            label.Text = "UserId: " + Heap.SharedInstance.UserId + "\nSessionId: " + Heap.SharedInstance.SessionId;
+            label.Text = "UserId: " + Heap.UserId + "\nSessionId: " + Heap.SessionId + "\nIdentity: " + Heap.Identity;
         }
 
         partial void startRecordingTapped(UIButton sender)
         {
-            Console.WriteLine("startRecordingTapped...");
-            Heap.SharedInstance.StartRecording("833626842");
+            StartRecording("833626842", new HeapOptions
+            {
+                //BaseUri = new Uri("https://mybaseuri.com"),
+                UploadInterval = TimeSpan.FromSeconds(5),
+                CaptureAdvertiserId = true,
+                StartSessionImmediately = true
+            });
             updateLabel();
         }
 
         partial void stopRecordingTapped(UIButton sender)
         {
-            Console.WriteLine("stopRecordingTapped...");
-            Heap.SharedInstance.StopRecording();
+            Heap.StopRecording();
             updateLabel();
         }
 
         partial void identifyTapped(UIButton sender)
         {
-            Console.WriteLine("identifyTapped");
-            Heap.SharedInstance.Identify("Xamarin user");
+            Heap.Identify("Xamarin user");
             updateLabel();
         }
 
         partial void resetIdentityTapped(UIButton sender)
         {
-            Console.WriteLine("resetIdentityTapped");
-            Heap.SharedInstance.ResetIdentity();
+            Heap.ResetIdentity();
             updateLabel();
         }
 
         partial void trackTapped(UIButton sender)
         {
-            Console.WriteLine("trackTapped");
-            Heap.SharedInstance.Track("My event");
+            Heap.Track("My event");
             updateLabel();
         }
 
         partial void trackWithPropertiesTapped(UIButton sender)
         {
-            Console.WriteLine("Tracking with properties");
-            var properties = new NSDictionary("key1-string", "my-value 1", "key2-number", 256);
-            Heap.SharedInstance.Track("My event with properties", properties);
+            Dictionary<string, string> properties = new Dictionary<string, string>
+                {
+                    {"key-1", "value-1"},
+                    {"key-2", "value-2"},
+                    {"key-3", "value-3"},
+                    {"key-4", "value-4" },
+                    {"key-5", "value-5"}
+                };
+            Heap.Track("My event with properties", properties);
             updateLabel();
         }
 
         partial void addEventPropertiesTapped(UIButton sender)
         {
-            Console.WriteLine("addEventPropertiesTapped");
-            var properties = new NSDictionary("my-event-property-string", "my-value 1", "my-event-property-number", 512);
-            Heap.SharedInstance.AddEventProperties(properties);
+            Dictionary<string, string> properties = new Dictionary<string, string>
+                {
+                    {"event-key-1", "event-value-1"},
+                    {"event-key-2", "event-value-2"},
+                    {"event-key-3", "event-value-3"},
+                    {"event-key-4", "event-value-4" },
+                    {"event-key-5", "event-value-5"}
+                };
+            Heap.AddEventProperties(properties);
             updateLabel();
         }
 
         partial void addUserProperties(UIButton sender)
         {
-            Console.WriteLine("addUserProperties");
-            var properties = new NSDictionary("my-user-property-string", "my-value 1", "my-user-property-number", 1024);
-            Heap.SharedInstance.AddUserProperties(properties);
+            Dictionary<string, string> properties = new Dictionary<string, string>
+                {
+                    {"user-key-1", "user-value-1"},
+                    {"user-key-2", "user-value-2"},
+                    {"user-key-3", "user-value-3"},
+                    {"user-key-4", "user-value-4" },
+                    {"user-key-5", "user-value-5"}
+                };
+            Heap.AddUserProperties(properties);
             updateLabel();
         }
 
         partial void clearEventPropertiesTapped(NSObject sender)
         {
-            Console.WriteLine("clearEventPropertiesTapped...");
-            Heap.SharedInstance.ClearEventProperties();
+            Heap.ClearEventProperties();
             updateLabel();
         }
 
         partial void removeEventPropertyTapped(UIButton sender)
         {
-            Console.WriteLine("removeEventPropertyTapped...");
-            Heap.SharedInstance.RemoveEventProperty("my-event-property-number");
+            Heap.RemoveEventProperty("event-key-5");
             updateLabel();
         }
     }

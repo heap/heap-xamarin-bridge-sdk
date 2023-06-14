@@ -12,11 +12,11 @@ using Foundation;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("HeapSwiftCore.iOS")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("HeapInc.Xamarin.iOS")]
+[assembly: AssemblyDescription("Heap manual track SDK for Xamarin on iOS")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HeapSwiftCore")]
+[assembly: AssemblyCompany("Heap Inc.")]
+[assembly: AssemblyProduct("HeapInc.Xamarin.iOS")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -1,11 +1,13 @@
 ﻿using Foundation;
 using ObjCRuntime;
 using WebKit;
+using System.Collections.Generic;
 
 namespace HeapInc.Xamarin.iOS
 {
     // @interface HeapLogger : NSObject
     [BaseType(typeof(NSObject), Name = "_TtC23HeapSwiftCoreInterfaces10HeapLogger")]
+    [Internal]
     interface HeapLogger
     {
         // @property (readonly, nonatomic, strong, class) HeapLogger * _Nonnull sharedInstance;
@@ -21,7 +23,8 @@ namespace HeapInc.Xamarin.iOS
     // @interface HeapOption
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
-    interface HeapOption
+    [Internal]
+    interface HeapOption : INativeObject
     {
         // -(id)isEqual:(id _Nullable)object __attribute__((warn_unused_result("")));
         [Export("isEqual:")]
@@ -67,6 +70,11 @@ namespace HeapInc.Xamarin.iOS
         [Export("captureAdvertiserId", ArgumentSemantic.Strong)]
         HeapOption CaptureAdvertiserId { get; }
 
+        // @property (readonly, nonatomic, strong, class) HeapOption * _Nonnull startSessionImmediately;
+        [Static]
+        [Export("startSessionImmediately", ArgumentSemantic.Strong)]
+        HeapOption StartSessionImmediately { get; }
+
         // @property (readonly, nonatomic, strong, class) HeapOption * _Nonnull disablePageviewAutocapture;
         [Static]
         [Export("disablePageviewAutocapture", ArgumentSemantic.Strong)]
@@ -105,6 +113,7 @@ namespace HeapInc.Xamarin.iOS
 
     // @interface HeapSourceInfo
     [DisableDefaultCtor]
+    [Internal]
     interface HeapSourceInfo
     {
     }
@@ -112,6 +121,7 @@ namespace HeapInc.Xamarin.iOS
     // @interface Heap
     [DisableDefaultCtor]
     [BaseType(typeof(NSObject), Name = "_TtC13HeapSwiftCore4Heap")]
+    [Internal]
     interface Heap
     {
         // @property (nonatomic, strong, class) Heap * _Nonnull sharedInstance;
@@ -129,7 +139,7 @@ namespace HeapInc.Xamarin.iOS
 
         // -(void)startRecording:(NSString * _Nonnull)environmentId withOptions:(id)options;
         [Export("startRecording:withOptions:")]
-        void StartRecording(string environmentId, NSObject options);
+        void StartRecording(string environmentId, NSDictionary options);
 
         // -(void)stopRecording;
         [Export("stopRecording")]
@@ -141,7 +151,7 @@ namespace HeapInc.Xamarin.iOS
 
         // -(void)track:(NSString * _Nonnull)event properties:(id)properties;
         [Export("track:properties:")]
-        void Track(string @event, NSObject properties);
+        void Track(string @event, NSDictionary properties);
 
         // -(void)identify:(NSString * _Nonnull)identity;
         [Export("identify:")]
@@ -153,11 +163,11 @@ namespace HeapInc.Xamarin.iOS
 
         // -(void)addUserProperties:(id)properties;
         [Export("addUserProperties:")]
-        void AddUserProperties(NSObject properties);
+        void AddUserProperties(NSDictionary properties);
 
         // -(void)addEventProperties:(id)properties;
         [Export("addEventProperties:")]
-        void AddEventProperties(NSObject properties);
+        void AddEventProperties(NSDictionary properties);
 
         // -(void)removeEventProperty:(NSString * _Nonnull)name;
         [Export("removeEventProperty:")]
@@ -180,8 +190,8 @@ namespace HeapInc.Xamarin.iOS
         string SessionId { get; }
 
         // -(NSString * _Nullable)fetchSessionId __attribute__((warn_unused_result("")));
-        [NullAllowed, Export("fetchSessionId")]
-        string FetchSessionId { get; }
+        [Export("fetchSessionId")]
+        string FetchSessionId();
 
         // -(void)attachWebView:(WKWebView * _Nonnull)webView origins:(id)origins injectHeapJavaScript:(id)injectHeapJavaScript;
         [Export("attachWebView:origins:injectHeapJavaScript:")]
@@ -193,6 +203,7 @@ namespace HeapInc.Xamarin.iOS
     }
 
     [Protocol(Name = "_TtP13HeapSwiftCore21HeapObjcPropertyValue_")]
+    [Internal]
     interface HeapObjcPropertyValue
     {
         // @required @property (readonly, copy, nonatomic) NSString * _Nonnull heapValue;
@@ -202,6 +213,7 @@ namespace HeapInc.Xamarin.iOS
     }
 
     // @interface HeapSwiftCore_Swift_302
+    [Internal]
     interface HeapSwiftCore_Swift_302
     {
         // @property (readonly, copy, nonatomic) NSString * _Nonnull heapValue;
