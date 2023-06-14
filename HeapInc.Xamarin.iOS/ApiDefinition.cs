@@ -113,9 +113,26 @@ namespace HeapInc.Xamarin.iOS
 
     // @interface HeapSourceInfo
     [DisableDefaultCtor]
+    [BaseType(typeof(NSObject))]
     [Internal]
     interface HeapSourceInfo
     {
+        // @property (readonly, copy, nonatomic) NSString * _Nonnull name;
+        [Export ("name")]
+        string Name { get; }
+
+        // @property (readonly, copy, nonatomic) NSString * _Nonnull version;
+        [Export ("version")]
+        string Version { get; }
+
+        // @property (readonly, copy, nonatomic) NSString * _Nonnull platform;
+        [Export ("platform")]
+        string Platform { get; }
+
+        // +(HeapSourceInfo * _Nonnull)sourceInfoWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version platform:(NSString * _Nonnull)platform __attribute__((warn_unused_result("")));
+        [Static]
+        [Export ("sourceInfoWithName:version:platform:")]
+        HeapSourceInfo SourceInfo (string name, string version, string platform);
     }
 
     // @interface Heap
@@ -145,13 +162,9 @@ namespace HeapInc.Xamarin.iOS
         [Export("stopRecording")]
         void StopRecording();
 
-        // -(void)track:(NSString * _Nonnull)event;
-        [Export("track:")]
-        void Track(string @event);
-
-        // -(void)track:(NSString * _Nonnull)event properties:(id)properties;
-        [Export("track:properties:")]
-        void Track(string @event, NSDictionary properties);
+        // -(void)track:(NSString * _Nonnull)event properties:(id)properties sourceInfo:(HeapSourceInfo * _Nullable)sourceInfo;
+        [Export ("track:properties:sourceInfo:")]
+        void Track (string @event, NSDictionary properties, [NullAllowed] HeapSourceInfo sourceInfo);
 
         // -(void)identify:(NSString * _Nonnull)identity;
         [Export("identify:")]

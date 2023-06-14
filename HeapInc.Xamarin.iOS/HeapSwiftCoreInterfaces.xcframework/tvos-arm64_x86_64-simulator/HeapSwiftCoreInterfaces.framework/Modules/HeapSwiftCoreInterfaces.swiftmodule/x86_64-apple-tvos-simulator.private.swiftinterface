@@ -10,12 +10,19 @@ import UIKit
 import _Concurrency
 import _StringProcessing
 @objc(HeapSourceInfo) public class SourceInfo : ObjectiveC.NSObject {
-  final public let name: Swift.String
-  final public let version: Swift.String
-  final public let platform: Swift.String
+  @objc final public let name: Swift.String
+  @objc final public let version: Swift.String
+  @objc final public let platform: Swift.String
   final public let properties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue]
   public init(name: Swift.String, version: Swift.String, platform: Swift.String, properties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue] = [:])
   @objc deinit
+}
+extension HeapSwiftCoreInterfaces.SourceInfo {
+  @objc(sourceInfoWithName:version:platform:properties:) public static func __sourceInfo(name: Swift.String, version: Swift.String, platform: Swift.String, properties: [Swift.String : HeapSwiftCoreInterfaces.HeapObjcPropertyValue]) -> HeapSwiftCoreInterfaces.SourceInfo
+  @objc(sourceInfoWithName:version:platform:) public static func __sourceInfo(name: Swift.String, version: Swift.String, platform: Swift.String) -> HeapSwiftCoreInterfaces.SourceInfo
+  @objc(properties) dynamic public var __objcProperties: [Swift.String : Swift.String] {
+    @objc get
+  }
 }
 public protocol HeapProtocol {
   func startRecording(_ environmentId: Swift.String, with options: [HeapSwiftCoreInterfaces.Option : Any])
@@ -167,6 +174,19 @@ public struct PageviewProperties {
   public var url: Foundation.URL?
   public var sourceProperties: [Swift.String : HeapSwiftCoreInterfaces.HeapPropertyValue]
   public static func with(_ populator: (inout HeapSwiftCoreInterfaces.PageviewProperties) throws -> ()) rethrows -> HeapSwiftCoreInterfaces.PageviewProperties
+}
+@objc public protocol HeapObjcPropertyValue : ObjectiveC.NSObjectProtocol {
+  @objc var heapValue: Swift.String { get }
+}
+extension Foundation.NSString : HeapSwiftCoreInterfaces.HeapObjcPropertyValue, HeapSwiftCoreInterfaces.HeapPropertyValue {
+  @objc dynamic public var heapValue: Swift.String {
+    @objc get
+  }
+}
+extension Foundation.NSNumber : HeapSwiftCoreInterfaces.HeapObjcPropertyValue, HeapSwiftCoreInterfaces.HeapPropertyValue {
+  @objc dynamic public var heapValue: Swift.String {
+    @objc get
+  }
 }
 public enum Interaction {
   case custom(Swift.String)

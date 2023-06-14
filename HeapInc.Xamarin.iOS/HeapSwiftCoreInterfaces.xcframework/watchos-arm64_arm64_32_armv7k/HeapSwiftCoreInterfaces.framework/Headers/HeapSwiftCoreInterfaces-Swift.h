@@ -272,6 +272,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapLogger *
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSString;
+
+SWIFT_PROTOCOL("_TtP23HeapSwiftCoreInterfaces21HeapObjcPropertyValue_")
+@protocol HeapObjcPropertyValue <NSObject>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
 typedef SWIFT_ENUM_NAMED(NSInteger, HeapLogLevel, "LogLevel", open) {
 /// Heap will not print any log messages.
   HeapLogLevelNone = 0,
@@ -302,7 +309,16 @@ typedef SWIFT_ENUM_NAMED(NSInteger, HeapLogLevel, "LogLevel", open) {
   HeapLogLevelTrace = 50,
 };
 
-@class NSString;
+
+@interface NSNumber (SWIFT_EXTENSION(HeapSwiftCoreInterfaces)) <HeapObjcPropertyValue>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
+
+@interface NSString (SWIFT_EXTENSION(HeapSwiftCoreInterfaces)) <HeapObjcPropertyValue>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
 enum OptionType : NSInteger;
 
 SWIFT_CLASS_NAMED("Option")
@@ -368,8 +384,18 @@ typedef SWIFT_ENUM(NSInteger, OptionType, open) {
 
 SWIFT_CLASS_NAMED("SourceInfo")
 @interface HeapSourceInfo : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull version;
+@property (nonatomic, readonly, copy) NSString * _Nonnull platform;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface HeapSourceInfo (SWIFT_EXTENSION(HeapSwiftCoreInterfaces))
++ (HeapSourceInfo * _Nonnull)sourceInfoWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version platform:(NSString * _Nonnull)platform properties:(NSDictionary<NSString *, id <HeapObjcPropertyValue>> * _Nonnull)properties SWIFT_WARN_UNUSED_RESULT;
++ (HeapSourceInfo * _Nonnull)sourceInfoWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version platform:(NSString * _Nonnull)platform SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull properties;
 @end
 
 #endif
@@ -654,6 +680,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapLogger *
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSString;
+
+SWIFT_PROTOCOL("_TtP23HeapSwiftCoreInterfaces21HeapObjcPropertyValue_")
+@protocol HeapObjcPropertyValue <NSObject>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
 typedef SWIFT_ENUM_NAMED(NSInteger, HeapLogLevel, "LogLevel", open) {
 /// Heap will not print any log messages.
   HeapLogLevelNone = 0,
@@ -684,7 +717,16 @@ typedef SWIFT_ENUM_NAMED(NSInteger, HeapLogLevel, "LogLevel", open) {
   HeapLogLevelTrace = 50,
 };
 
-@class NSString;
+
+@interface NSNumber (SWIFT_EXTENSION(HeapSwiftCoreInterfaces)) <HeapObjcPropertyValue>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
+
+@interface NSString (SWIFT_EXTENSION(HeapSwiftCoreInterfaces)) <HeapObjcPropertyValue>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
 enum OptionType : NSInteger;
 
 SWIFT_CLASS_NAMED("Option")
@@ -750,8 +792,18 @@ typedef SWIFT_ENUM(NSInteger, OptionType, open) {
 
 SWIFT_CLASS_NAMED("SourceInfo")
 @interface HeapSourceInfo : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull version;
+@property (nonatomic, readonly, copy) NSString * _Nonnull platform;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface HeapSourceInfo (SWIFT_EXTENSION(HeapSwiftCoreInterfaces))
++ (HeapSourceInfo * _Nonnull)sourceInfoWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version platform:(NSString * _Nonnull)platform properties:(NSDictionary<NSString *, id <HeapObjcPropertyValue>> * _Nonnull)properties SWIFT_WARN_UNUSED_RESULT;
++ (HeapSourceInfo * _Nonnull)sourceInfoWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version platform:(NSString * _Nonnull)platform SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull properties;
 @end
 
 #endif
@@ -1036,6 +1088,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapLogger *
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSString;
+
+SWIFT_PROTOCOL("_TtP23HeapSwiftCoreInterfaces21HeapObjcPropertyValue_")
+@protocol HeapObjcPropertyValue <NSObject>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
 typedef SWIFT_ENUM_NAMED(NSInteger, HeapLogLevel, "LogLevel", open) {
 /// Heap will not print any log messages.
   HeapLogLevelNone = 0,
@@ -1066,7 +1125,16 @@ typedef SWIFT_ENUM_NAMED(NSInteger, HeapLogLevel, "LogLevel", open) {
   HeapLogLevelTrace = 50,
 };
 
-@class NSString;
+
+@interface NSNumber (SWIFT_EXTENSION(HeapSwiftCoreInterfaces)) <HeapObjcPropertyValue>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
+
+@interface NSString (SWIFT_EXTENSION(HeapSwiftCoreInterfaces)) <HeapObjcPropertyValue>
+@property (nonatomic, readonly, copy) NSString * _Nonnull heapValue;
+@end
+
 enum OptionType : NSInteger;
 
 SWIFT_CLASS_NAMED("Option")
@@ -1132,8 +1200,18 @@ typedef SWIFT_ENUM(NSInteger, OptionType, open) {
 
 SWIFT_CLASS_NAMED("SourceInfo")
 @interface HeapSourceInfo : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull version;
+@property (nonatomic, readonly, copy) NSString * _Nonnull platform;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface HeapSourceInfo (SWIFT_EXTENSION(HeapSwiftCoreInterfaces))
++ (HeapSourceInfo * _Nonnull)sourceInfoWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version platform:(NSString * _Nonnull)platform properties:(NSDictionary<NSString *, id <HeapObjcPropertyValue>> * _Nonnull)properties SWIFT_WARN_UNUSED_RESULT;
++ (HeapSourceInfo * _Nonnull)sourceInfoWithName:(NSString * _Nonnull)name version:(NSString * _Nonnull)version platform:(NSString * _Nonnull)platform SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nonnull properties;
 @end
 
 #endif

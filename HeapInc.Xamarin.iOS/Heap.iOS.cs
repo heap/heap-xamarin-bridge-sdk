@@ -37,8 +37,12 @@ namespace HeapInc.Xamarin.iOS
             }
         }
 
+        private HeapSourceInfo SourceInfo { get; }
+
         protected HeapIOS()
         {
+            var version = typeof(HeapIOS).Assembly.GetName().Version.ToString();
+            SourceInfo = HeapSourceInfo.SourceInfo("xamarin_bridge", version, "Xamarin.iOS");
         }
 
         public string? SessionId => Heap.SharedInstance.SessionId;
@@ -84,7 +88,7 @@ namespace HeapInc.Xamarin.iOS
 
         public void Track(string trackEvent, Dictionary<string, string> properties)
         {
-            Heap.SharedInstance.Track(trackEvent, DictionaryToNSDictionary(properties));
+            Heap.SharedInstance.Track(trackEvent, DictionaryToNSDictionary(properties), SourceInfo);
         }
 
         public void Identify(string identity)
