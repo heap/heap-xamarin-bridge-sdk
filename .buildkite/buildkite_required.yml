@@ -10,21 +10,18 @@
 # instance of the heap/monorepo-diff plugin as needed.
 #
 # FOR SMALL REPOS, this file can directly contain build-steps.
----
+
+env:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+  ANDROID_SDK_ROOT: "/usr/local/share/android-commandlinetools"
+  PATH: "/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin"
+
 steps:
-  - label: ":pipeline: PLACEHOLDER FOR REQUIRED STEPS FOR SMALL REPOS"
-    command: |
-      echo "Required steps can be added here"
-
-  # - label: ":pipeline: PLACEHOLDER FOR FAN-OUT TO REQUIRED PIPELINES FOR LARGE REPOS"
-  #   plugins:
-  #     - heap/monorepo-diff#v1.3.6:
-  #         diff: .buildkite/monorepo_diff.bash all
-  #         watch:
-  #           - path: something/
-  #             config:
-  #               trigger: "tbd-pipeline-here"
-
-  #           - path: else/
-  #             config:
-  #               trigger: "tbd-another-pipeline-here"
+  - label: "Build for iOS and Android"
+    timeout_in_minutes: 10
+    command: make bridge ios android
+    agents:
+      queue: "macos"
+    artifact_paths:
+      - "artifacts/*.dll"
