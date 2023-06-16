@@ -1,17 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main">
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	app:layout_behavior="@string/appbar_scrolling_view_behavior"
+	tools:showIn="@layout/activity_main"
+	android:orientation="vertical"
+	android:gravity="center_vertical|center_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Hello World!" />
+	<TextView
+		android:id="@+id/heap_label"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello World!" />
 
-</RelativeLayout>
+	<Button
+		android:id="@+id/button_start_recording"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="Start Recording" />
+
+	<Button
+		android:id="@+id/button_stop_recording"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="Stop Recording" />
+
+	<Button
+		android:id="@+id/button_track"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="Track" />
+
+	<Button
+		android:id="@+id/button_track_with_properties"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="Track with properties" />
+
+	<Button
+		android:id="@+id/button_identify"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="Identify" />
+
+	<Button
+		android:id="@+id/button_reset_identity"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="Reset Identity" />
+
+	<Button
+		android:id="@+id/button_add_user_properties"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="Add user properties" />
+
+	<Button
+		android:id="@+id/button_add_event_properties"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="add event properties" />
+
+	<Button
+		android:id="@+id/button_remove_event_properties"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="remove event properties" />
+
+	<Button
+		android:id="@+id/button_clear_event_properties"
+		android:layout_width="@dimen/button_width"
+		android:layout_height="@dimen/button_height"
+		android:text="clear event properties" />
+
+</LinearLayout>
 

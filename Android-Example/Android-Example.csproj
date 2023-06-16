@@ -112,6 +112,10 @@
       <Project>{5A98B5B5-4DC2-4234-9C14-30D19844A989}</Project>
       <Name>HeapInc.Xamarin.Android</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HeapInc.Xamarin\HeapInc.Xamarin.csproj">
+      <Project>{830FA26C-76E2-4117-A2E3-6DC096D75138}</Project>
+      <Name>HeapInc.Xamarin</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
