@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using IO.Heap.Core.Api.Plugin.Model;
 #nullable enable
 namespace HeapInc.Xamarin.Android
 {
@@ -27,6 +27,8 @@ namespace HeapInc.Xamarin.Android
 
     public class HeapAndroid : HeapInc.Xamarin.IHeap
     {
+        private SourceInfo SourceInfo { get; }
+
         private static readonly HeapAndroid instance = new HeapAndroid();
 
         public static HeapAndroid Instance
@@ -35,6 +37,12 @@ namespace HeapInc.Xamarin.Android
             {
                 return instance;
             }
+        }
+
+        protected HeapAndroid()
+        {
+            var version = typeof(HeapAndroid).Assembly.GetName().Version.ToString();
+            SourceInfo = new SourceInfo("xamarin_bridge", version, "Xamarin.Android", new Dictionary<string, Java.Lang.Object>());
         }
 
         public string? SessionId => Heap.SessionId;
@@ -84,7 +92,7 @@ namespace HeapInc.Xamarin.Android
 
         public void Track(string trackEvent, Dictionary<string, string> properties)
         {
-            Heap.Track(trackEvent, ObjectToJavaObject(properties));
+            Heap.Track(trackEvent, ObjectToJavaObject(properties), new Java.Util.Date(), SourceInfo);
         }
 
         public void Identify(string identity)
