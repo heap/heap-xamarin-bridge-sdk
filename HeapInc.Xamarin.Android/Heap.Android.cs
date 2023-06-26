@@ -155,7 +155,13 @@ namespace HeapInc.Xamarin.Android
                 var value = pair.Value;
                 if (value is not null)
                 {
-                    _ = newDict.TryAdd(pair.Key, value);
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                    var javaValue = (Java.Lang.Object)value;
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                    if (javaValue is not null)
+                    {
+                        _ = newDict.TryAdd(pair.Key, javaValue);
+                    }
                 }
             }
 
