@@ -1,11 +1,15 @@
 ﻿<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>HeapInc.Xamarin.iOS</id>
-    <version>0.1.0-alpha1</version>
+    <version>0.1.0-alpha2</version>
     <authors>HeapInc</authors>
     <description>Heap manual track SDK for Xamarin on iOS</description>
     <dependencies>
       <group targetFramework="Xamarin.iOS1.0" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="*.xcframework/**" target="content/HeapInc.Xamarin.iOS.resources" />
+    <file src="HeapInc.Xamarin.iOS.targets" target="build/HeapInc.Xamarin.iOS.targets" />
+  </files>
 </package>

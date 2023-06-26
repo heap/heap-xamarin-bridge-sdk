@@ -1,7 +1,7 @@
 ﻿<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>HeapInc.Xamarin</id>
-    <version>0.1.0-alpha1</version>
+    <version>0.1.0-alpha2</version>
     <authors>HeapInc</authors>
     <description>Heap manual track SDK for Xamarin</description>
     <dependencies>

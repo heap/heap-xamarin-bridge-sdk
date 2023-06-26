@@ -7,6 +7,7 @@ namespace HeapInc.Xamarin.iOS
 {
     // @interface HeapLogger : NSObject
     [BaseType(typeof(NSObject), Name = "_TtC23HeapSwiftCoreInterfaces10HeapLogger")]
+    [Protocol]
     [Internal]
     interface HeapLogger
     {
@@ -22,6 +23,7 @@ namespace HeapInc.Xamarin.iOS
 
     // @interface HeapOption
     [BaseType(typeof(NSObject))]
+    [Protocol]
     [DisableDefaultCtor]
     [Internal]
     interface HeapOption : INativeObject
@@ -114,6 +116,7 @@ namespace HeapInc.Xamarin.iOS
     // @interface HeapSourceInfo
     [DisableDefaultCtor]
     [BaseType(typeof(NSObject))]
+    [Protocol]
     [Internal]
     interface HeapSourceInfo
     {
@@ -138,6 +141,7 @@ namespace HeapInc.Xamarin.iOS
     // @interface Heap
     [DisableDefaultCtor]
     [BaseType(typeof(NSObject), Name = "_TtC13HeapSwiftCore4Heap")]
+    [Protocol]
     [Internal]
     interface Heap
     {
