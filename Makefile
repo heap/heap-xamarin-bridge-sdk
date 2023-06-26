@@ -26,24 +26,21 @@ clean:
 
 bridge:
 	@echo "--- Building bridge"
-	msbuild -r -p:Configuration=Release HeapInc.Xamarin
-	nuget pack HeapInc.Xamarin -Prop Configuration=Release
 	mkdir -p artifacts
-	cp HeapInc.Xamarin/bin/Release/netstandard2.1/*.dll artifacts
-	cp HeapInc.Xamarin*.nupkg artifacts
+	msbuild -r -p:Configuration=Release HeapInc.Xamarin
+	nuget pack HeapInc.Xamarin -Prop Configuration=Release -OutputDirectory ./artifacts
+	cp HeapInc.Xamarin/bin/Release/netstandard2.1/HeapInc.*.dll artifacts
 
 ios:
 	@echo "--- Building for iOS"
-	msbuild -r -p:Configuration=Release HeapInc.Xamarin.iOS
-	nuget pack HeapInc.Xamarin.iOS -Prop Configuration=Release
 	mkdir -p artifacts
-	cp HeapInc.Xamarin.iOS/bin/Release/*.dll artifacts
-	cp HeapInc.Xamarin.iOS*.nupkg artifacts
+	msbuild -r -p:Configuration=Release HeapInc.Xamarin.iOS
+	nuget pack HeapInc.Xamarin.iOS -Prop Configuration=Release -OutputDirectory ./artifacts
+	cp HeapInc.Xamarin.iOS/bin/Release/HeapInc.*.dll artifacts
 
 android:
 	@echo "--- Building for Android"
-	msbuild -r -p:Configuration=Release HeapInc.Xamarin.Android
-	nuget pack HeapInc.Xamarin.Android -Prop Configuration=Release
 	mkdir -p artifacts
-	cp HeapInc.Xamarin.Android/bin/Release/*.dll artifacts
-	cp HeapInc.Xamarin.Android*.nupkg artifacts
+	msbuild -r -p:Configuration=Release HeapInc.Xamarin.Android
+	nuget pack HeapInc.Xamarin.Android -Prop Configuration=Release -OutputDirectory ./artifacts
+	cp HeapInc.Xamarin.Android/bin/Release/HeapInc.*.dll artifacts

@@ -62,9 +62,6 @@
     <LibraryProjectZip Include="Jars\heap-android-core-0.2.0.aar" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedReferenceJar Include="Jars\protobuf-javalite-3.21.12.jar" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\HeapInc.Xamarin\HeapInc.Xamarin.csproj">
       <Project>{830FA26C-76E2-4117-A2E3-6DC096D75138}</Project>
       <Name>HeapInc.Xamarin</Name>
@@ -73,6 +70,18 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.GooglePlayServices.Ads.Identifier">
       <Version>118.0.1.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.KotlinX.Coroutines.Core.Jvm">
+      <Version>1.7.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Google.Guava">
+      <Version>31.1.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Protobuf.JavaLite">
+      <Version>3.23.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.WebKit">
+      <Version>1.6.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />

@@ -1,11 +1,13 @@
 ﻿<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>HeapInc.Xamarin.iOS</id>
-    <version>0.1.0-alpha2</version>
+    <version>0.3.0</version>
     <authors>HeapInc</authors>
     <description>Heap manual track SDK for Xamarin on iOS</description>
     <dependencies>
-      <group targetFramework="Xamarin.iOS1.0" />
+      <group targetFramework="Xamarin.iOS1.0">
+        <dependency id="HeapInc.Xamarin" version="[0.2, 1)" />
+      </group>
     </dependencies>
   </metadata>
   <files>

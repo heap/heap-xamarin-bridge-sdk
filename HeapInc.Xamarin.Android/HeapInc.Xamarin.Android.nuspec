@@ -1,11 +1,21 @@
 ﻿<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>HeapInc.Xamarin.Android</id>
-    <version>0.1.0-alpha2</version>
+    <version>0.2.0</version>
     <authors>HeapInc</authors>
     <description>Heap manual track SDK for Xamarin on Android</description>
     <dependencies>
-      <group targetFramework="MonoAndroid13.0" />
+      <group targetFramework="MonoAndroid13.0">
+        <dependency id="HeapInc.Xamarin" version="[0.1, 1)" />
+
+        <!-- Dependencies from https://github.com/heap/heap-android-core/blob/main/core/build.gradle -->
+        <dependency id="Xamarin.KotlinX.Coroutines.Core.Jvm" version="1.6.1" />
+        <dependency id="Xamarin.GooglePlayServices.Ads.Identifier" version="118.0.0" />
+        <dependency id="Xamarin.Google.Guava" version="28.0.0" />
+        <dependency id="Xamarin.Protobuf.JavaLite" version="3.21.12" />
+        <dependency id="Xamarin.AndroidX.WebKit" version="1.3.0" />
+      </group>
+
     </dependencies>
   </metadata>
 </package>

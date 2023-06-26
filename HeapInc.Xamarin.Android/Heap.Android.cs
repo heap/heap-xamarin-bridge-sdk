@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using IO.Heap.Core;
+using IO.Heap.Core.Logs;
 using IO.Heap.Core.Api.Plugin.Model;
+
 #nullable enable
 namespace HeapInc.Xamarin.Android
 {
@@ -16,12 +19,13 @@ namespace HeapInc.Xamarin.Android
         {
             var implementation = HeapAndroid.Instance;
             implementation.StartRecording(context, environmentId, options);
-            HeapInc.Xamarin.Heap.SetImplementation(implementation);
+
+            Heap.SetImplementation(implementation);
         }
 
         public static void SetLogLevel(HeapLogLevel logLevel)
         {
-            Heap.SetLogLevel(HeapAndroid.HeapLogLevelToAndroidLogLevel(logLevel));
+            CoreHeap.SetLogLevel(HeapAndroid.HeapLogLevelToAndroidLogLevel(logLevel));
         }
     }
 
@@ -45,13 +49,13 @@ namespace HeapInc.Xamarin.Android
             SourceInfo = new SourceInfo("xamarin_bridge", version, "Xamarin.Android", new Dictionary<string, Java.Lang.Object>());
         }
 
-        public string? SessionId => Heap.SessionId;
-        public string? UserId => Heap.UserId;
-        public string? Identity => Heap.Identity;
+        public string? SessionId => CoreHeap.SessionId;
+        public string? UserId => CoreHeap.UserId;
+        public string? Identity => CoreHeap.Identity;
 
         public void StartRecording(global::Android.Content.Context context, string environmentId)
         {
-            Heap.StartRecording(context, environmentId);
+            CoreHeap.StartRecording(context, environmentId);
         }
 
         public void StartRecording(global::Android.Content.Context context, string environmentId, HeapOptions options)
@@ -82,87 +86,80 @@ namespace HeapInc.Xamarin.Android
             }
 
             Options heapOptions = new Options(uri, uploadInterval, captureAdvertiserId, Options.DefaultDisableInteractionTextCapture, startSessionImmediately);
-            Heap.StartRecording(context, environmentId, heapOptions);
+            CoreHeap.StartRecording(context, environmentId, heapOptions);
         }
 
         public void StopRecording()
         {
-            Heap.StopRecording();
+            CoreHeap.StopRecording();
         }
 
         public void Track(string trackEvent, Dictionary<string, string> properties)
         {
-            Heap.Track(trackEvent, ObjectToJavaObject(properties), new Java.Util.Date(), SourceInfo);
+            CoreHeap.Track(trackEvent, TransformPropertyDictionary(properties), new Java.Util.Date(), SourceInfo);
         }
 
         public void Identify(string identity)
         {
-            Heap.Identify(identity);
+            CoreHeap.Identify(identity);
         }
 
         public void ResetIdentity()
         {
-            Heap.ResetIdentity();
+            CoreHeap.ResetIdentity();
         }
 
         public void AddEventProperties(Dictionary<string, string> properties)
         {
-            Heap.AddEventProperties(ObjectToJavaObject(properties));
+            CoreHeap.AddEventProperties(TransformPropertyDictionary(properties));
         }
 
         public void AddUserProperties(Dictionary<string, string> properties)
         {
-            Heap.AddUserProperties(ObjectToJavaObject(properties));
+            CoreHeap.AddUserProperties(TransformPropertyDictionary(properties));
         }
 
         public void ClearEventProperties()
         {
-            Heap.ClearEventProperties();
+            CoreHeap.ClearEventProperties();
         }
 
         public void RemoveEventProperty(string name)
         {
-            Heap.RemoveEventProperty(name);
+            CoreHeap.RemoveEventProperty(name);
         }
 
         public string? FetchSessionId()
         {
-            return Heap.FetchSessionId();
+            return CoreHeap.FetchSessionId();
         }
 
-        public static IO.Heap.Core.Logs.LogLevel HeapLogLevelToAndroidLogLevel(HeapLogLevel heapLogLevel)
+        internal static CoreLogLevel HeapLogLevelToAndroidLogLevel(HeapLogLevel heapLogLevel)
         {
             switch (heapLogLevel)
             {
-                case HeapLogLevel.None: return IO.Heap.Core.Logs.LogLevel.None;
-                case HeapLogLevel.Error: return IO.Heap.Core.Logs.LogLevel.Error;
-                case HeapLogLevel.Warn: return IO.Heap.Core.Logs.LogLevel.Warn;
-                case HeapLogLevel.Info: return IO.Heap.Core.Logs.LogLevel.Info;
-                case HeapLogLevel.Debug: return IO.Heap.Core.Logs.LogLevel.Debug;
-                case HeapLogLevel.Trace: return IO.Heap.Core.Logs.LogLevel.Trace;
-                default: return IO.Heap.Core.Logs.LogLevel.Info;
+                case HeapLogLevel.None: return CoreLogLevel.None;
+                case HeapLogLevel.Error: return CoreLogLevel.Error;
+                case HeapLogLevel.Warn: return CoreLogLevel.Warn;
+                case HeapLogLevel.Info: return CoreLogLevel.Info;
+                case HeapLogLevel.Debug: return CoreLogLevel.Debug;
+                case HeapLogLevel.Trace: return CoreLogLevel.Trace;
+                default: return CoreLogLevel.Info;
             }
         }
 
-        private static Dictionary<string, Java.Lang.Object> ObjectToJavaObject(object obj)
+        private static Dictionary<string, Java.Lang.Object> TransformPropertyDictionary(Dictionary<string, string> source)
         {
-            if (typeof(IDictionary).IsAssignableFrom(obj.GetType()))
-            {
-                IDictionary idict = (IDictionary)obj;
-                Dictionary<string, Java.Lang.Object> newDict = new Dictionary<string, Java.Lang.Object>();
-
-                foreach (object key in idict.Keys)
+            var newDict = new Dictionary<string, Java.Lang.Object>();
+            foreach (var pair in source) {
+                var value = pair.Value;
+                if (value is not null)
                 {
-                    newDict.Add(key.ToString(), idict[key].ToString());
+                    _ = newDict.TryAdd(pair.Key, value);
                 }
-                return newDict;
             }
-            else
-            {
-                // object is not a dictionary
-                Console.WriteLine("The 'properties' object is not a Dictionary");
-                return null;
-            }
+
+            return newDict;
         }
     }
 }

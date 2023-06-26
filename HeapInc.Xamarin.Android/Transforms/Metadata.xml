@@ -1,5 +1,21 @@
 ﻿<metadata>
-  <attr path="/api/package[@name='io.heap.core']" name="managedName">HeapInc.Xamarin.Android</attr>
-  <attr path="/api/package[@name='io.heap.core']/class[@name='Heap']" name="managedName">Heap</attr>
+  <attr path="//class[@visibility='public']" name="visibility">internal</attr>
+  <attr path="//interface[@visibility='public']" name="visibility">internal</attr>
+  
+  <attr path="/api/package[@name='io.heap.core']/class[@name='Heap']" name="managedName">CoreHeap</attr>
+  <attr path="/api/package[@name='io.heap.core.logs']/class[@name='LogLevel']" name="managedName">CoreLogLevel</attr>
+
+  <remove-node path="//field[@name='Companion']" />
+
+
+  <remove-node path="/api/package[starts-with(@name,'io.heap.core.common')]" />
+  <remove-node path="/api/package[starts-with(@name,'io.heap.core.data')]" />
+  <remove-node path="/api/package[starts-with(@name,'io.heap.core.state')]" />
+  <remove-node path="/api/package[starts-with(@name,'io.heap.core.upload')]" />
+
+  <remove-note path="//*[@visibility='private']" />
+  <remove-node path="//constructor[contains(@jni-signature,'TrackProtos')]" />
+  <remove-node path="//method[contains(@jni-signature,'TrackProtos')]" />
+
 </metadata>
 
