@@ -1,0 +1,11 @@
+﻿<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>HeapInc.Xamarin.Android</id>
+    <version>0.1.0-alpha1</version>
+    <authors>HeapInc</authors>
+    <description>Heap manual track SDK for Xamarin on Android</description>
+    <dependencies>
+      <group targetFramework="MonoAndroid13.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -21,7 +21,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AssemblyName>HeapInc.Xamarin.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>portable</DebugType>
@@ -230,10 +229,11 @@
     <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\armv7k-apple-watchos.abi.json" />
     <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos.swiftdoc" />
     <BundleResource Include="HeapSwiftCoreInterfaces.xcframework\watchos-arm64_arm64_32_armv7k\HeapSwiftCoreInterfaces.framework\Modules\HeapSwiftCoreInterfaces.swiftmodule\arm64-apple-watchos.swiftinterface" />
+    <BundleResource Include="HeapInc.Xamarin.iOS.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HeapInc.Xamarin\HeapInc.Xamarin.csproj">
-      <Project>{E7B8F644-DA3F-4E96-B1C9-E24EE9EE6F38}</Project>
+      <Project>{830FA26C-76E2-4117-A2E3-6DC096D75138}</Project>
       <Name>HeapInc.Xamarin</Name>
     </ProjectReference>
   </ItemGroup>
