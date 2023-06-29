@@ -1,6 +1,24 @@
 export NUGET_ENABLE_LEGACY_CSPROJ_PACK := true
 
+PUBLIC_REPO := git@github.com:heap/heap-xamarin-bridge-sdk.git
+INTERNAL_REPO := git@github.com:heap/heap-xamarin-bridge.git
+MAIN_BRANCH := main
+
+define set_public_repo
+
+	if [ "$$(git remote get-url --push origin)" != '${INTERNAL_REPO}' ]; then \
+		echo 'Incorrect origin. Aborting.'; \
+		exit 1; \
+	elif [ "$$(git remote get-url --push public)" = "" ]; then \
+		git remote add public '${PUBLIC_REPO}'; \
+	elif [ "$$(git remote get-url --push public)" != '${PUBLIC_REPO}' ]; then \
+		git remote set-url --push public '${PUBLIC_REPO}'; \
+	fi
+
+endef
+
 dependencies:
+# (LOCAL) Install the dependencies required to run build steps.
 
 	@echo "--- Installing msbuild and dependencies"
 
@@ -20,11 +38,15 @@ dependencies:
 	ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
 clean:
+# (LOCAL or CI) Clears all artifacts from the build.
+
 	-rm -r artifacts
 	-rm -r */bin
 	-rm -r */obj
 
 bridge:
+# (LOCAL or CI) Builds the common bridge library.
+
 	@echo "--- Building bridge"
 	mkdir -p artifacts
 	msbuild -r -p:Configuration=Release HeapInc.Xamarin
@@ -32,6 +54,8 @@ bridge:
 	cp HeapInc.Xamarin/bin/Release/netstandard2.1/HeapInc.*.dll artifacts
 
 ios:
+# (LOCAL or CI) Builds the iOS wrapper for heap-swift-core.
+
 	@echo "--- Building for iOS"
 	mkdir -p artifacts
 	msbuild -r -p:Configuration=Release HeapInc.Xamarin.iOS
@@ -39,8 +63,40 @@ ios:
 	cp HeapInc.Xamarin.iOS/bin/Release/HeapInc.*.dll artifacts
 
 android:
+# (LOCAL or CI) Builds the Android wrapper for heap-android-core.
+
 	@echo "--- Building for Android"
 	mkdir -p artifacts
 	msbuild -r -p:Configuration=Release HeapInc.Xamarin.Android
 	nuget pack HeapInc.Xamarin.Android -Prop Configuration=Release -OutputDirectory ./artifacts
 	cp HeapInc.Xamarin.Android/bin/Release/HeapInc.*.dll artifacts
+
+push_branch_to_public:
+# (CI) Pushes the current branch to the public repo if it is `main`.
+# This can be run locally if it is failing on the CDN.
+
+ifndef BUILDKITE_BRANCH
+	$(error BUILDKITE_BRANCH is not set)
+endif
+
+ifneq (${BUILDKITE_BRANCH},${MAIN_BRANCH})
+	$(error Current branch ${BUILDKITE_BRANCH} is not ${MAIN_BRANCH})
+endif
+
+	$(call set_public_repo)
+
+	git fetch origin '${MAIN_BRANCH}:${MAIN_BRANCH}'
+	git push public '${MAIN_BRANCH}'
+
+push_tag_to_public:
+# (CI) Pushes the current tag to the public repo.
+# This can be run locally if it is failing on the CDN.
+
+ifndef BUILDKITE_TAG
+	$(error BUILDKITE_TAG is not set)
+endif
+
+	$(call set_public_repo)
+
+	git fetch origin --tags
+	git push public ${BUILDKITE_TAG}
