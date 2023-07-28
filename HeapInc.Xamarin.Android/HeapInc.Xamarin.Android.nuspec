@@ -4,6 +4,9 @@
     <version>0.3.0</version>
     <authors>HeapInc</authors>
     <description>Heap manual track SDK for Xamarin on Android</description>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/heap/heap-xamarin-bridge-sdk</projectUrl>
+    <readme>docs\readme.md</readme>
     <dependencies>
       <group targetFramework="MonoAndroid13.0">
         <dependency id="HeapInc.Xamarin" version="[0.1, 1)" />
@@ -18,4 +21,7 @@
 
     </dependencies>
   </metadata>
+  <files>
+    <file src="README.md" target="docs/" />
+  </files>
 </package>
