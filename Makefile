@@ -100,3 +100,14 @@ endif
 
 	git fetch origin --tags
 	git push public ${BUILDKITE_TAG}
+
+reset_local_nuget:
+	nuget sources remove -Name 'HeapInc Local' 2> /dev/null || true
+	nuget sources Add -Name 'HeapInc Local' -Source $$PWD/artifacts
+	rm -rf ~/.nuget/packages/heapinc.xamarin* || true
+
+sync_example_versions:
+	./DevTools/SyncExampleVersions.sh
+
+restore_examples: bridge ios android reset_local_nuget sync_example_versions
+	nuget restore examples.sln -Source $$PWD/artifacts

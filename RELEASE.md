@@ -11,8 +11,10 @@ When a new version of HeapSwiftCore is released, a new version of `HeapSwiftCore
 4. Replace the xcframework directories in [HeapInc.Xamarin.iOS](HeapInc.Xamarin.iOS/) with those from the zip.
 5. Update [HeapInc.Xamarin.iOS/HeapInc.Xamarin.iOS.nuspec](HeapInc.Xamarin.iOS/HeapInc.Xamarin.iOS.nuspec) and
    [HeapInc.Xamarin.iOS/Properties/AssemblyInfo.cs](HeapInc.Xamarin.iOS/Properties/AssemblyInfo.cs) with the new version. (See note below.)
-6. Test that nothing has broken.
-7. Create a new PR for the change.
+6. Run `make clean restore_examples` to update the example app.
+7. Test the example app to make sure nothing has broken.
+8. Create a new PR for the change.
+
 
 ## Updating HeapAndroidCore
 
@@ -27,8 +29,9 @@ When a new version of HeapAndroidCore is released, a new version of `heap-androi
 6. Update [HeapInc.Xamarin.Android/HeapInc.Xamarin.Android.nuspec](HeapInc.Xamarin.Android/HeapInc.Xamarin.Android.nuspec) and
    [HeapInc.Xamarin.Android/Properties/AssemblyInfo.cs](HeapInc.Xamarin.Android/Properties/AssemblyInfo.cs) with the new version. (See note
    below.)
-7. Test that nothing has broken.
-8. Create a new PR for the change.
+7. Run `make clean restore_examples` to update the example app.
+8. Test the example app to make sure nothing has broken.
+9. Create a new PR for the change.
 
 ## Adding a new feature to the bridge
 
@@ -44,8 +47,9 @@ following steps.
    [HeapInc.Xamarin.Android/HeapInc.Xamarin.Android.nuspec](HeapInc.Xamarin.Android/HeapInc.Xamarin.Android.nuspec) to use the new version
    as a minimum dependency.
 5. Bump the versions of HeapInc.Xamarin.iOS and HeapInc.Xamarin.Android if they were already released.
-6. Test that changes.
-7. Create a new PR for the change.
+6. Run `make clean restore_examples` to update the example app.
+7. Test the changes in the example app.
+8. Create a new PR for the change.
 
 ## Versioning
 

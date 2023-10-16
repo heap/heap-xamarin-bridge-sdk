@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -106,16 +106,12 @@
     <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.6.1.1" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.8.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HeapInc.Xamarin.Android\HeapInc.Xamarin.Android.csproj">
-      <Project>{5A98B5B5-4DC2-4234-9C14-30D19844A989}</Project>
-      <Name>HeapInc.Xamarin.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HeapInc.Xamarin\HeapInc.Xamarin.csproj">
-      <Project>{830FA26C-76E2-4117-A2E3-6DC096D75138}</Project>
-      <Name>HeapInc.Xamarin</Name>
-    </ProjectReference>
+    <PackageReference Include="HeapInc.Xamarin">
+      <Version>0.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="HeapInc.Xamarin.Android">
+      <Version>0.4.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
