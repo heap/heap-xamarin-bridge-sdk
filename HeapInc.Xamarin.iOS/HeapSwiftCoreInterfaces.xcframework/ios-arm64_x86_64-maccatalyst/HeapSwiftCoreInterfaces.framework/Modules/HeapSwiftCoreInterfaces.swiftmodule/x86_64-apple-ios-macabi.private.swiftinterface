@@ -134,6 +134,7 @@ extension HeapSwiftCoreInterfaces.OptionType : Swift.CustomStringConvertible {
   @objc public static let messageBatchByteLimit: HeapSwiftCoreInterfaces.Option
   @objc public static let messageBatchMessageLimit: HeapSwiftCoreInterfaces.Option
   @objc public static let captureAdvertiserId: HeapSwiftCoreInterfaces.Option
+  @objc public static let captureVendorId: HeapSwiftCoreInterfaces.Option
 }
 @objc extension HeapSwiftCoreInterfaces.Option {
   @objc public static let disablePageviewAutocapture: HeapSwiftCoreInterfaces.Option

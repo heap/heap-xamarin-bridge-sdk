@@ -349,6 +349,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapOption *
 + (HeapOption * _Nonnull)messageBatchMessageLimit SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapOption * _Nonnull captureAdvertiserId;)
 + (HeapOption * _Nonnull)captureAdvertiserId SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapOption * _Nonnull captureVendorId;)
++ (HeapOption * _Nonnull)captureVendorId SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -757,6 +759,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapOption *
 + (HeapOption * _Nonnull)messageBatchMessageLimit SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapOption * _Nonnull captureAdvertiserId;)
 + (HeapOption * _Nonnull)captureAdvertiserId SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) HeapOption * _Nonnull captureVendorId;)
++ (HeapOption * _Nonnull)captureVendorId SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
