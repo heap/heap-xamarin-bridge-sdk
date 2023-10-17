@@ -6,10 +6,10 @@
     <description>Heap manual track SDK for Xamarin on Android</description>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/heap/heap-xamarin-bridge-sdk</projectUrl>
-    <readme>docs\readme.md</readme>
+    <readme>docs\README.md</readme>
     <dependencies>
       <group targetFramework="MonoAndroid13.0">
-        <dependency id="HeapInc.Xamarin" version="[0.1, 1)" />
+        <dependency id="HeapInc.Xamarin" version="[0.4, 1)" />
 
         <!-- Dependencies from https://github.com/heap/heap-android-core/blob/main/core/build.gradle -->
         <dependency id="Xamarin.KotlinX.Coroutines.Core.Jvm" version="1.6.1" />

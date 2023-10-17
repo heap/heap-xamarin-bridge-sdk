@@ -6,7 +6,7 @@
     <description>Heap manual track SDK for Xamarin</description>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/heap/heap-xamarin-bridge-sdk</projectUrl>
-    <readme>docs\readme.md</readme>
+    <readme>docs\README.md</readme>
     <dependencies>
       <group targetFramework=".NETStandard2.1" />
     </dependencies>

@@ -6,10 +6,10 @@
     <description>Heap manual track SDK for Xamarin on iOS</description>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/heap/heap-xamarin-bridge-sdk</projectUrl>
-    <readme>docs\readme.md</readme>
+    <readme>docs\README.md</readme>
     <dependencies>
       <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="HeapInc.Xamarin" version="[0.2, 1)" />
+        <dependency id="HeapInc.Xamarin" version="[0.4, 1)" />
       </group>
     </dependencies>
   </metadata>
