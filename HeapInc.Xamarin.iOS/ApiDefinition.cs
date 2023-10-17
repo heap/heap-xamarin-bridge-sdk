@@ -111,6 +111,11 @@ namespace HeapInc.Xamarin.iOS
         [Static]
         [Export("interactionHierarchyCaptureLimit", ArgumentSemantic.Strong)]
         HeapOption InteractionHierarchyCaptureLimit { get; }
+
+        // @property (readonly, nonatomic, strong, class) HeapOption * _Nonnull captureVendorId;
+        [Static]
+        [Export("captureVendorId", ArgumentSemantic.Strong)]
+        HeapOption CaptureVendorId { get; }
     }
 
     // @interface HeapSourceInfo

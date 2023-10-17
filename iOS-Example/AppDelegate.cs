@@ -19,11 +19,12 @@ namespace iOS_Example
         public bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
         {
             SetLogLevel(HeapLogLevel.Trace);
-            StartRecording("833626842", new HeapOptions {
+            StartRecording("1501760456", new HeapOptions {
                 //BaseUri = new Uri("https://mybaseuri.com"),
                 UploadInterval = TimeSpan.FromSeconds(5),
                 CaptureAdvertiserId = true,
-                StartSessionImmediately = true
+                StartSessionImmediately = true,
+                CaptureVendorId = true
             });
 
             return true;

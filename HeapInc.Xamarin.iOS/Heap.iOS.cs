@@ -78,6 +78,11 @@ namespace HeapInc.Xamarin.iOS
                 heapOptions.Add(HeapOption.StartSessionImmediately, NSObject.FromObject(options.StartSessionImmediately));
             }
 
+            if (options.CaptureVendorId)
+            {
+                heapOptions.Add(HeapOption.CaptureVendorId, NSObject.FromObject(options.CaptureVendorId));
+            }
+
             Heap.SharedInstance.StartRecording(environmentId, heapOptions);
         }
 
